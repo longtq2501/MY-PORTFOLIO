@@ -15,17 +15,58 @@ const dmSans = DM_Sans({
   variable: "--font-dm-sans",
 });
 
+const BASE_URL = "https://tonquynhlong.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Tôn Quỳnh Long — Fullstack Developer",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "Tôn Quỳnh Long — Fullstack Developer",
+    template: "%s · Tôn Quỳnh Long",
+  },
   description:
-    "Fullstack Developer building production systems. Tutor Pro (solo, live) + Flood Rescue Coordination (Tech Lead, 6-person team).",
+    "Fullstack Developer (Next.js + Spring Boot) building production systems. Tutor Pro — solo EdTech SaaS live in production. Flood Rescue Coordination — Tech Lead of 6-person microservices team.",
+  keywords: [
+    "Fullstack Developer",
+    "Next.js",
+    "Spring Boot",
+    "Java",
+    "React",
+    "TypeScript",
+    "Ho Chi Minh City",
+    "Vietnam",
+    "internship",
+    "fresher",
+    "Tôn Quỳnh Long",
+    "portfolio",
+  ],
+  authors: [{ name: "Tôn Quỳnh Long", url: BASE_URL }],
+  creator: "Tôn Quỳnh Long",
   openGraph: {
-    title: "Tôn Quỳnh Long — Fullstack Developer",
-    description: "I design the interface, architect the backend, and ship the whole thing.",
-    url: "https://tonquynhlong.dev",
-    siteName: "TQL Portfolio",
-    locale: "en_US",
     type: "website",
+    locale: "en_US",
+    url: BASE_URL,
+    siteName: "Tôn Quỳnh Long",
+    title: "Tôn Quỳnh Long — Fullstack Developer",
+    description:
+      "I design the interface, architect the backend, and ship the whole thing. 2 production projects. Seeking fullstack internship 2026.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tôn Quỳnh Long — Fullstack Developer",
+    description:
+      "I design the interface, architect the backend, and ship the whole thing.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
+  },
+  alternates: {
+    canonical: BASE_URL,
   },
 };
 
