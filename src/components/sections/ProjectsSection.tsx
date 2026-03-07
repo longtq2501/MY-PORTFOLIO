@@ -4,6 +4,7 @@ import SectionLabel from "@/components/ui/SectionLabel";
 import { projects } from "@/lib/data/projects";
 import TutorProMock from "@/components/ui/TutorProMock";
 import FloodRescueMock from "@/components/ui/FloodRescueMock";
+import Link from "next/link";
 
 const mocks = [TutorProMock, FloodRescueMock];
 
@@ -16,15 +17,15 @@ const reveal = (delay = 0) => ({
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="bg-[var(--bg)] px-12 py-32">
-      <div className="mb-16">
+    <section id="projects" className="bg-[var(--bg)] px-6 py-20 md:px-12 md:py-32">
+      <div className="mb-12 md:mb-16">
         <SectionLabel>Projects</SectionLabel>
-        <h2 className="font-display text-[clamp(32px,5vw,52px)] font-black leading-[1.1] tracking-[-0.02em]">
+        <h2 className="font-display font-black leading-[1.1] tracking-[-0.02em] text-[clamp(28px,5vw,52px)]">
           What I&apos;ve shipped.
         </h2>
       </div>
 
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-5 md:gap-6">
         {projects.map((project, i) => {
           const Mock = mocks[i];
           const isReverse = i % 2 !== 0;
@@ -33,18 +34,18 @@ export default function ProjectsSection() {
             <motion.div
               key={project.id}
               {...reveal(i * 0.1)}
-              className={`grid grid-cols-1 overflow-hidden rounded-2xl border border-white/[0.07] bg-[var(--surface)] transition-colors hover:border-[rgba(124,106,255,0.3)] lg:grid-cols-2`}
+              className="grid grid-cols-1 overflow-hidden rounded-2xl border border-white/[0.07] bg-[var(--surface)] transition-colors hover:border-[rgba(124,106,255,0.3)] lg:grid-cols-2"
             >
               {/* Visual */}
-              <div className={`relative min-h-[380px] bg-[var(--bg2)] ${isReverse ? "lg:order-last" : ""}`}>
-                <div className="absolute inset-0 flex items-center justify-center p-8">
+              <div className={`relative min-h-[260px] bg-[var(--bg2)] md:min-h-[380px] ${isReverse ? "lg:order-last" : ""}`}>
+                <div className="absolute inset-0 flex items-center justify-center p-6 md:p-8">
                   <Mock />
                 </div>
               </div>
 
               {/* Info */}
-              <div className="flex flex-col justify-center p-12">
-                <div className="font-display text-[72px] font-black leading-none tracking-[-0.04em] text-white/[0.04] mb-[-8px]">
+              <div className="flex flex-col justify-center p-6 md:p-10 lg:p-12">
+                <div className="font-display font-black leading-none tracking-[-0.04em] text-white/[0.04] mb-[-6px] text-[52px] md:text-[72px]">
                   {project.num}
                 </div>
 
@@ -63,26 +64,22 @@ export default function ProjectsSection() {
                   {project.tag}
                 </div>
 
-                <h3 className="mb-4 font-display text-[clamp(22px,3vw,32px)] font-black leading-[1.15] tracking-[-0.02em]">
+                <h3 className="mb-3 font-display font-black leading-[1.15] tracking-[-0.02em] text-[clamp(20px,3vw,32px)]">
                   {project.title}
                 </h3>
 
-                <p className="mb-7 text-[15px] leading-[1.75] text-[var(--text-muted)]">
+                <p className="mb-6 text-[14px] leading-[1.75] text-[var(--text-muted)] md:text-[15px]">
                   {project.description}
                 </p>
 
                 {/* Metrics */}
-                <div className="mb-7 flex gap-6 border-y border-white/[0.07] py-4">
+                <div className="mb-6 flex gap-5 border-y border-white/[0.07] py-4 md:gap-6">
                   {project.metrics.map((m) => (
                     <div key={m.key} className="flex flex-col gap-0.5">
-                      <span className="font-display text-[20px] font-bold tracking-tight">
+                      <span className="font-display font-bold tracking-tight text-[17px] md:text-[20px]">
                         {m.value}
                         {m.accent && (
-                          <span
-                            style={{
-                              color: m.key.includes("GPS") ? "#00e5a0" : "var(--accent)",
-                            }}
-                          >
+                          <span style={{ color: m.key.includes("GPS") ? "#00e5a0" : "var(--accent)" }}>
                             {m.accent}
                           </span>
                         )}
@@ -92,8 +89,8 @@ export default function ProjectsSection() {
                   ))}
                 </div>
 
-                {/* Stack pills */}
-                <div className="mb-7 flex flex-wrap gap-2">
+                {/* Stack */}
+                <div className="mb-6 flex flex-wrap gap-2">
                   {project.stack.map((s) => (
                     <span
                       key={s}
@@ -105,7 +102,7 @@ export default function ProjectsSection() {
                 </div>
 
                 {/* Links */}
-                <div className="flex gap-3">
+                <div className="flex flex-wrap gap-3">
                   {project.links.map((link) => (
                     <a
                       key={link.label}
@@ -121,6 +118,16 @@ export default function ProjectsSection() {
                       {link.label}
                     </a>
                   ))}
+                  <Link
+                    href={`/projects/${project.id}`}
+                    className="inline-flex items-center gap-1.5 rounded-md border border-white/[0.07] px-4 py-2 text-[13px] font-medium text-[var(--text-muted)] transition-all hover:border-[var(--accent)] hover:text-[var(--text)] hover:-translate-y-px"
+                  >
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                      <polyline points="14 2 14 8 20 8" />
+                    </svg>
+                    Case Study
+                  </Link>
                 </div>
               </div>
             </motion.div>
