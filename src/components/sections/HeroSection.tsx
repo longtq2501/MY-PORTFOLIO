@@ -48,10 +48,12 @@ function TerminalBlock() {
   }, []);
 
   useEffect(() => {
-    // Reveal lines one by one
     const timeouts: ReturnType<typeof setTimeout>[] = [];
     
-    if (visibleLines === 0 && !showResult) {
+    const run = () => {
+      setVisibleLines(0);
+      setShowResult(false);
+
       CODE_LINES.forEach((line, i) => {
         timeouts.push(setTimeout(() => setVisibleLines(i + 1), line.delay + 600));
       });
@@ -59,17 +61,18 @@ function TerminalBlock() {
         setTimeout(() => setShowResult(true), RESULT_LINE.delay + 600)
       );
 
-      // Loop: reset after 4s pause
+      // Loop: reset and restart after 4s pause
       timeouts.push(setTimeout(() => {
-        setVisibleLines(0);
-        setShowResult(false);
+        run();
       }, RESULT_LINE.delay + 600 + 4000));
-    }
+    };
+
+    run();
 
     return () => {
       timeouts.forEach(clearTimeout);
     };
-  }, [visibleLines, showResult]);
+  }, []); // Run once on mount
 
   return (
     <div className="relative w-full overflow-hidden rounded-2xl border border-white/[0.08] bg-[#07070f] shadow-2xl">
