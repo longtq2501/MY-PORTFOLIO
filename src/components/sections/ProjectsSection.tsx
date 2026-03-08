@@ -28,7 +28,7 @@ export default function ProjectsSection() {
         </h2>
       </div>
 
-      <div className="flex flex-col gap-5 md:gap-6">
+      <div className="flex flex-col gap-10 md:gap-12">
         {projects.map((project, i) => {
           const Mock = mocks[i];
           const isReverse = i % 2 !== 0;
@@ -37,10 +37,13 @@ export default function ProjectsSection() {
             <motion.div
               key={project.id}
               {...reveal(i * 0.1)}
-              className="grid grid-cols-1 overflow-hidden rounded-2xl border border-white/[0.07] bg-[var(--surface)] transition-colors hover:border-[rgba(124,106,255,0.3)] lg:grid-cols-2"
+              className="grid grid-cols-1 overflow-visible rounded-2xl border border-white/[0.07] bg-[var(--surface)] transition-colors hover:border-[rgba(124,106,255,0.3)] lg:grid-cols-2"
             >
               {/* Visual */}
-              <div className={`relative min-h-[260px] bg-[var(--bg2)] md:min-h-[380px] ${isReverse ? "lg:order-last" : ""}`}>
+              <div
+                className={`relative min-h-[300px] md:min-h-[440px] bg-[var(--bg2)] overflow-visible rounded-t-2xl lg:rounded-none ${isReverse ? "lg:order-last lg:rounded-r-2xl" : "lg:rounded-l-2xl"
+                  }`}
+              >
                 <div className="absolute inset-0 flex items-center justify-center p-6 md:p-8">
                   <Mock />
                 </div>

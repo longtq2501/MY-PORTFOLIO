@@ -1,51 +1,79 @@
+"use client";
+import { motion } from "framer-motion";
+import Image from "next/image";
+
 export default function TutorProMock() {
   return (
-    <div className="w-full max-w-[420px] rounded-xl border border-[rgba(124,106,255,0.2)] bg-[#0d0d1a] shadow-[0_20px_60px_rgba(0,0,0,0.6)] overflow-hidden">
-      {/* Topbar */}
-      <div className="flex h-9 items-center gap-1.5 border-b border-white/[0.06] bg-[#13131f] px-3.5">
-        <span className="h-2 w-2 rounded-full bg-[#ff5f56]" />
-        <span className="h-2 w-2 rounded-full bg-[#ffbd2e]" />
-        <span className="h-2 w-2 rounded-full bg-[#27c93f]" />
-      </div>
-      {/* Body */}
-      <div className="flex h-[220px]">
-        {/* Sidebar */}
-        <div className="flex w-12 flex-col items-center gap-2.5 border-r border-white/[0.05] bg-[#0a0a15] py-3.5">
-          {[true, false, false, false, false].map((active, i) => (
-            <div
-              key={i}
-              className="h-7 w-7 rounded-md"
-              style={{ background: active ? "rgba(124,106,255,0.3)" : "rgba(255,255,255,0.05)" }}
-            />
-          ))}
+    <div className="relative h-full w-full select-none overflow-visible">
+      {/* Glow */}
+      <div className="pointer-events-none absolute left-[10%] top-[15%] h-[280px] w-[280px] rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(124,106,255,0.18) 0%, transparent 70%)", filter: "blur(50px)" }} />
+      <div className="pointer-events-none absolute bottom-[5%] right-[5%] h-[180px] w-[180px] rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(0,229,200,0.13) 0%, transparent 70%)", filter: "blur(40px)" }} />
+
+      {/* ── Main: dashboard dark — full box ── */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute inset-0 overflow-hidden rounded-xl border border-white/[0.08]"
+        style={{ boxShadow: "0 32px 64px rgba(0,0,0,0.55)" }}
+      >
+        <Image
+          src="/screenshots/tutor-dashboard-light.png"
+          alt="Tutor Pro Dashboard"
+          fill
+          className="object-cover object-top"
+          unoptimized
+        />
+        {/* Live badge */}
+        <div className="absolute right-3 top-3 z-10 flex items-center gap-1.5 rounded-full border border-[rgba(0,229,160,0.35)] bg-[rgba(0,229,160,0.12)] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#00e5a0]">
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#00e5a0]"
+            style={{ boxShadow: "0 0 6px #00e5a0" }} />
+          Live
         </div>
-        {/* Main */}
-        <div className="flex-1 p-3.5 space-y-2">
-          <div className="rounded-md bg-white/[0.04] p-2.5 space-y-2">
-            <div className="h-1.5 w-[60%] rounded-full bg-[rgba(124,106,255,0.4)]" />
-            <div className="h-1.5 w-[40%] rounded-full bg-white/[0.08]" />
-            <div className="mt-2 grid grid-cols-2 gap-1.5">
-              {[
-                { num: "300+", label: "Sessions" },
-                { num: "<800ms", label: "Generated" },
-              ].map((m) => (
-                <div key={m.num} className="rounded bg-[rgba(124,106,255,0.08)] p-1.5 text-center">
-                  <div className="font-display text-[11px] font-bold text-[var(--accent)]">{m.num}</div>
-                  <div className="text-[7px] text-[var(--text-muted)]">{m.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="rounded-md bg-white/[0.04] p-2.5 space-y-1.5">
-            <div className="h-1.5 rounded-full bg-white/[0.08]" />
-            <div className="h-1.5 w-[50%] rounded-full bg-[rgba(0,229,200,0.3)]" />
-          </div>
-          <div className="rounded-md bg-white/[0.04] p-2.5 space-y-1.5">
-            <div className="h-1.5 w-[40%] rounded-full bg-white/[0.08]" />
-            <div className="h-1.5 rounded-full bg-white/[0.06]" />
-          </div>
-        </div>
-      </div>
+      </motion.div>
+
+      {/* ── Float left: VietQR — small, full image ── */}
+      <motion.div
+        initial={{ opacity: 0, x: -12, rotate: -4 }}
+        whileInView={{ opacity: 1, x: 0, rotate: -4 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+        whileHover={{ rotate: -1.5, scale: 1.05, zIndex: 30 }}
+        className="absolute -bottom-6 -left-4 z-20 w-[28%] overflow-hidden rounded-xl border border-white/[0.15] bg-white"
+        style={{ boxShadow: "0 16px 40px rgba(0,0,0,0.75)" }}
+      >
+        <Image
+          src="/screenshots/tutor-vietqr.png"
+          alt="VietQR Invoice"
+          width={300}
+          height={420}
+          className="w-full h-auto"
+          unoptimized
+        />
+      </motion.div>
+
+      {/* ── Float right: AI Feedback — small, full image ── */}
+      <motion.div
+        initial={{ opacity: 0, x: 12, rotate: 3.5 }}
+        whileInView={{ opacity: 1, x: 0, rotate: 3.5 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        whileHover={{ rotate: 1, scale: 1.05, zIndex: 30 }}
+        className="absolute -bottom-4 -right-4 z-20 w-[38%] overflow-hidden rounded-xl border border-white/[0.15]"
+        style={{ boxShadow: "0 16px 40px rgba(0,0,0,0.75)" }}
+      >
+        <Image
+          src="/screenshots/tutor-ai-feedback.png"
+          alt="AI Feedback"
+          width={400}
+          height={280}
+          className="w-full h-auto"
+          unoptimized
+        />
+      </motion.div>
     </div>
   );
 }
