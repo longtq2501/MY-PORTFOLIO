@@ -1,52 +1,59 @@
 "use client";
+import React from "react";
 import { motion } from "framer-motion";
 import SectionLabel from "@/components/ui/SectionLabel";
-
-const cards = [
-  {
-    badge: "SOLO PROJECT",
-    badgeColor: "accent",
-    status: "Live in Production",
-    title: "Tutor Pro",
-    desc: "EdTech SaaS — 10+ active users, 19 backend modules, WebRTC live classroom, AI feedback engine (Groq Llama 3.3 70B)",
-  },
-  {
-    badge: "TECH LEAD · 6-person team",
-    badgeColor: "accent",
-    status: null,
-    title: "Flood Rescue Coordination",
-    desc: "Microservices platform — RabbitMQ + Kafka, GPS live tracking, 5 actor roles, Docker + CI/CD on VPS",
-  },
-  {
-    badge: "EDUCATION",
-    badgeColor: "dim",
-    status: null,
-    title: "UTH — University of Transport HCMC",
-    desc: "Bachelor's in Information Technology · 2023 – 2027",
-  },
-];
-
-const reveal = {
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-80px" },
-  transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-};
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function AboutSection() {
+  const { t } = useLanguage();
+
+  const cards = [
+    {
+      badge: t("about.cards.solo"),
+      badgeColor: "accent",
+      status: t("about.cards.live"),
+      title: "Tutor Pro",
+      desc: t("about.cards.tutorProDesc"),
+    },
+    {
+      badge: t("about.cards.techLead"),
+      badgeColor: "accent",
+      status: null,
+      title: "Flood Rescue Coordination",
+      desc: t("about.cards.floodRescueDesc"),
+    },
+    {
+      badge: t("about.cards.education"),
+      badgeColor: "dim",
+      status: null,
+      title: t("about.cards.uth"),
+      desc: t("about.cards.degree"),
+    },
+  ];
+
+  const reveal = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-80px" },
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  };
+
   return (
     <section
       id="about"
       className="border-y border-white/[0.07] bg-[var(--bg2)] px-12 py-32"
     >
-      <SectionLabel>About</SectionLabel>
+      <SectionLabel>{t("about.title")}</SectionLabel>
       <motion.h2
         {...reveal}
         className="font-display text-[clamp(32px,5vw,52px)] font-black leading-[1.1] tracking-[-0.02em]"
       >
-        I build things people
-        <br />
-        actually use.
+        {t("about.heading").split("\n").map((line, i) => (
+          <React.Fragment key={i}>
+            {line}
+            {i < t("about.heading").split("\n").length - 1 && <br />}
+          </React.Fragment>
+        ))}
       </motion.h2>
 
       <div className="mt-16 grid grid-cols-1 gap-20 lg:grid-cols-2">
@@ -57,26 +64,16 @@ export default function AboutSection() {
           className="space-y-5"
         >
           {[
-            <>
-              I&apos;m a <strong className="font-medium text-[var(--text)]">third-year IT student</strong> at UTH —
-              but my projects don&apos;t look like coursework. Tutor Pro started as a tool I built
-              to manage my own tutoring business. It grew into a{" "}
-              <span className="text-[var(--accent)]">full EdTech platform</span> with WebRTC live
-              rooms, AI feedback, VietQR invoicing, and a real-time notification engine. It&apos;s
-              running in production right now.
-            </>,
-            <>
-              Simultaneously, I&apos;m leading a{" "}
-              <strong className="font-medium text-[var(--text)]">6-person team</strong> building a
-              microservices platform for flood rescue coordination — responsible for architecture,
-              infra setup, CI/CD pipeline, and sprint management via Jira. Two production-level
-              projects, running in parallel, year 3.
-            </>,
-            <>
-              Fullstack means I care about both sides equally. The performance of a Spring Boot
-              batch insert matters as much as the smoothness of a Framer Motion transition. I
-              design, I code, I ship.
-            </>,
+            t("about.para1").split(/\{(.*?)\}/).map((part, i) => {
+              if (part === "thirdYear") return <strong key={i} className="font-medium text-[var(--text)]">{t("about.thirdYear")}</strong>;
+              if (part === "fullEdTech") return <span key={i} className="text-[var(--accent)]">{t("about.fullEdTech")}</span>;
+              return part;
+            }),
+            t("about.para2").split(/\{(.*?)\}/).map((part, i) => {
+              if (part === "sixPerson") return <strong key={i} className="font-medium text-[var(--text)]">{t("about.sixPerson")}</strong>;
+              return part;
+            }),
+            t("about.para3")
           ].map((para, i) => (
             <p key={i} className="text-[16px] leading-[1.8] text-[var(--text-muted)]">
               {para}

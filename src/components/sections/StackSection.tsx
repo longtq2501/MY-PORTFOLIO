@@ -1,41 +1,44 @@
 "use client";
 import { motion } from "framer-motion";
 import SectionLabel from "@/components/ui/SectionLabel";
-
-const columns = [
-  {
-    title: "Frontend",
-    items: [
-      { icon: "⚡", name: "Next.js 15", sub: "App Router · SSR · RSC", level: 4, bg: "rgba(0,0,0,0.5)" },
-      { icon: "⚛", name: "React 19", sub: "Hooks · Query · Zustand", level: 4, bg: "rgba(97,218,251,0.1)", color: "#61DAFB" },
-      { icon: "𝗧", name: "TypeScript", sub: "Strict mode · Zod", level: 4, bg: "rgba(49,120,198,0.1)", color: "#3178C6" },
-      { icon: "🎨", name: "Tailwind + Framer", sub: "CSS 4 · Motion", level: 3, bg: "rgba(6,182,212,0.1)", color: "#06B6D4" },
-    ],
-  },
-  {
-    title: "Backend",
-    items: [
-      { icon: "🍃", name: "Spring Boot 3.4", sub: "Java 21 · Security · JPA", level: 4, bg: "rgba(109,179,63,0.1)", color: "#6DB33F" },
-      { icon: "🗄", name: "MySQL / PostgreSQL", sub: "Indexing · Optimization", level: 3, bg: "rgba(0,117,143,0.15)", color: "#00758F" },
-      { icon: "🐇", name: "RabbitMQ + Kafka", sub: "Task events · Streaming", level: 3, bg: "rgba(255,102,0,0.1)", color: "#FF6600" },
-      { icon: "🤖", name: "Groq AI", sub: "Llama 3.3 70B · <300ms", level: 3, bg: "rgba(124,106,255,0.1)", color: "var(--accent)" },
-    ],
-  },
-  {
-    title: "Infrastructure",
-    items: [
-      { icon: "🐳", name: "Docker Compose", sub: "Multi-service orchestration", level: 4, bg: "rgba(36,150,237,0.1)", color: "#2496ED" },
-      { icon: "⚙", name: "GitHub Actions", sub: "CI/CD · Auto-deploy VPS", level: 3, bg: "rgba(32,208,111,0.1)", color: "#20D06F" },
-      { icon: "🌐", name: "Nginx", sub: "Reverse proxy · HTTPS", level: 3, bg: "rgba(0,150,57,0.1)", color: "#009639" },
-      { icon: "📡", name: "WebRTC · SSE · WS", sub: "P2P · Real-time", level: 3, bg: "rgba(255,255,255,0.05)" },
-    ],
-  },
-];
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export default function StackSection() {
+  const { t } = useLanguage();
+
+  const columns = [
+    {
+      title: "Frontend",
+      items: [
+        { icon: "⚡", name: "Next.js 15", sub: t("stack.frontend.next"), level: 4, bg: "rgba(0,0,0,0.5)" },
+        { icon: "⚛", name: "React 19", sub: t("stack.frontend.react"), level: 4, bg: "rgba(97,218,251,0.1)", color: "#61DAFB" },
+        { icon: "𝗧", name: "TypeScript", sub: t("stack.frontend.ts"), level: 4, bg: "rgba(49,120,198,0.1)", color: "#3178C6" },
+        { icon: "🎨", name: "Tailwind + Framer", sub: t("stack.frontend.styling"), level: 3, bg: "rgba(6,182,212,0.1)", color: "#06B6D4" },
+      ],
+    },
+    {
+      title: "Backend",
+      items: [
+        { icon: "🍃", name: "Spring Boot 3.4", sub: t("stack.backend.spring"), level: 4, bg: "rgba(109,179,63,0.1)", color: "#6DB33F" },
+        { icon: "🗄", name: "MySQL / PostgreSQL", sub: t("stack.backend.db"), level: 3, bg: "rgba(0,117,143,0.15)", color: "#00758F" },
+        { icon: "🐇", name: "RabbitMQ + Kafka", sub: t("stack.backend.mq"), level: 3, bg: "rgba(255,102,0,0.1)", color: "#FF6600" },
+        { icon: "🤖", name: "Groq AI", sub: t("stack.backend.ai"), level: 3, bg: "rgba(124,106,255,0.1)", color: "var(--accent)" },
+      ],
+    },
+    {
+      title: "Infrastructure",
+      items: [
+        { icon: "🐳", name: "Docker Compose", sub: t("stack.infra.docker"), level: 4, bg: "rgba(36,150,237,0.1)", color: "#2496ED" },
+        { icon: "⚙", name: "GitHub Actions", sub: t("stack.infra.actions"), level: 3, bg: "rgba(32,208,111,0.1)", color: "#20D06F" },
+        { icon: "🌐", name: "Nginx", sub: t("stack.infra.nginx"), level: 3, bg: "rgba(0,150,57,0.1)", color: "#009639" },
+        { icon: "📡", name: "WebRTC · SSE · WS", sub: t("stack.infra.realtime"), level: 3, bg: "rgba(255,255,255,0.05)" },
+      ],
+    },
+  ];
+
   return (
     <section id="stack" className="border-t border-white/[0.07] bg-[var(--bg2)] px-12 py-32">
-      <SectionLabel>Tech Stack</SectionLabel>
+      <SectionLabel>{t("stack.title")}</SectionLabel>
       <motion.h2
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -43,7 +46,7 @@ export default function StackSection() {
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         className="font-display text-[clamp(32px,5vw,52px)] font-black leading-[1.1] tracking-[-0.02em] mb-3"
       >
-        Tools I work with.
+        {t("stack.heading")}
       </motion.h2>
       <motion.p
         initial={{ opacity: 0, y: 20 }}
@@ -52,7 +55,7 @@ export default function StackSection() {
         transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         className="mb-16 max-w-lg text-[17px] text-[var(--text-muted)]"
       >
-        Both sides of the stack, deliberately chosen for each problem.
+        {t("stack.sub")}
       </motion.p>
 
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">

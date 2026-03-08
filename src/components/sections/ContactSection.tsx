@@ -1,6 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import SectionLabel from "@/components/ui/SectionLabel";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import React from "react";
 
 const contactLinks = [
   {
@@ -39,6 +41,8 @@ const contactLinks = [
 ];
 
 export default function ContactSection() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="contact"
@@ -51,18 +55,15 @@ export default function ContactSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <SectionLabel className="justify-center mb-6">Contact</SectionLabel>
+          <SectionLabel className="justify-center mb-6">{t("contact.title")}</SectionLabel>
           <h2 className="mb-5 font-display text-[clamp(36px,6vw,64px)] font-black leading-[1.05] tracking-[-0.03em]">
-            Let&apos;s build
-            <br />
-            <span className="text-stroke-accent">something</span>
-            <br />
-            real.
+            {t("contact.heading").split(/\{(.*?)\}/).map((part, i) => {
+              if (part === "something") return <span key={i} className="text-stroke-accent">{t("contact.something")}</span>;
+              return <React.Fragment key={i}>{part}</React.Fragment>;
+            })}
           </h2>
-          <p className="mb-10 text-[16px] leading-[1.7] text-[var(--text-muted)]">
-            Open to fullstack internship and fresher roles in 2026 — Vietnam or remote.
-            <br />
-            If you&apos;re building something interesting, I&apos;d like to hear about it.
+          <p className="mb-10 text-[16px] leading-[1.7] text-[var(--text-muted)] whitespace-pre-line">
+            {t("contact.para")}
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">

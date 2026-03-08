@@ -3,12 +3,10 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useScrolled } from "@/hooks/useScrolled";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import LanguageToggle from "@/components/ui/LanguageToggle";
 
-const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Stack", href: "#stack" },
-];
+
 
 const contacts = [
   {
@@ -48,8 +46,15 @@ const contacts = [
 ];
 
 export default function Navbar() {
+  const { t } = useLanguage();
   const scrolled = useScrolled();
   const [open, setOpen] = useState(false);
+
+  const navLinks = [
+    { label: t("nav.about"), href: "#about" },
+    { label: t("nav.projects"), href: "#projects" },
+    { label: t("nav.stack"), href: "#stack" },
+  ];
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
@@ -83,12 +88,15 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <button
-          onClick={() => setOpen(true)}
-          className="inline-flex items-center gap-2 rounded-md bg-[var(--accent)] px-4 py-2 text-[13px] font-semibold text-white transition-all hover:opacity-85 hover:-translate-y-px"
-        >
-          Get in touch
-        </button>
+        <div className="flex items-center gap-4">
+          <LanguageToggle />
+          <button
+            onClick={() => setOpen(true)}
+            className="inline-flex items-center gap-2 rounded-md bg-[var(--accent)] px-4 py-2 text-[13px] font-semibold text-white transition-all hover:opacity-85 hover:-translate-y-px"
+          >
+            {t("nav.getInTouch")}
+          </button>
+        </div>
       </header>
 
       {/* ── Modal ── */}
@@ -120,10 +128,10 @@ export default function Navbar() {
                 <div className="flex items-center justify-between border-b border-white/[0.07] px-6 py-5">
                   <div>
                     <h2 className="font-display text-[20px] font-black tracking-[-0.02em] text-white">
-                      Let&apos;s connect
+                      {t("common.connect")}
                     </h2>
                     <p className="mt-0.5 text-[13px] text-[#7070a0]">
-                      Open to internship &amp; fresher roles 2026
+                      {t("common.internship2026")}
                     </p>
                   </div>
                   <button
@@ -163,7 +171,7 @@ export default function Navbar() {
 
                   {/* CV Download */}
                   <a
-                    href="/cv/Ton Quynh Long - resume.pdf"
+                    href="/cv/ton-quynh-long-resume.pdf"
                     download="Ton-Quynh-Long-CV.pdf"
                     className="group flex w-full items-center gap-4 rounded-xl border border-[rgba(124,106,255,0.25)] bg-[rgba(124,106,255,0.06)] p-4 transition-all hover:border-[rgba(124,106,255,0.5)] hover:bg-[rgba(124,106,255,0.1)]"
                   >
@@ -175,8 +183,8 @@ export default function Navbar() {
                       </svg>
                     </div>
                     <div className="min-w-0 flex-1">
-                      <div className="text-[11px] font-semibold uppercase tracking-wider text-[#555566]">Resume</div>
-                      <div className="text-[14px] font-medium text-[#c8c6e8]">Download CV (.pdf)</div>
+                      <div className="text-[11px] font-semibold uppercase tracking-wider text-[#555566]">{t("common.resume")}</div>
+                      <div className="text-[14px] font-medium text-[#c8c6e8]">{t("common.downloadCV")}</div>
                     </div>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
                       className="flex-shrink-0 text-[#444455] transition-colors group-hover:text-[var(--accent)]">

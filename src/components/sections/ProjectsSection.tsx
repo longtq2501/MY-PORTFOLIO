@@ -5,6 +5,7 @@ import { projects } from "@/lib/data/projects";
 import TutorProMock from "@/components/ui/TutorProMock";
 import FloodRescueMock from "@/components/ui/FloodRescueMock";
 import Link from "next/link";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const mocks = [TutorProMock, FloodRescueMock];
 
@@ -16,12 +17,14 @@ const reveal = (delay = 0) => ({
 });
 
 export default function ProjectsSection() {
+  const { t, language } = useLanguage();
+
   return (
     <section id="projects" className="bg-[var(--bg)] px-6 py-20 md:px-12 md:py-32">
       <div className="mb-12 md:mb-16">
-        <SectionLabel>Projects</SectionLabel>
+        <SectionLabel>{t("projects.title")}</SectionLabel>
         <h2 className="font-display font-black leading-[1.1] tracking-[-0.02em] text-[clamp(28px,5vw,52px)]">
-          What I&apos;ve shipped.
+          {t("projects.heading")}
         </h2>
       </div>
 
@@ -61,7 +64,7 @@ export default function ProjectsSection() {
                       animation: project.statusDot === "active" ? "pulse 2s infinite" : undefined,
                     }}
                   />
-                  {project.tag}
+                  {project.tag[language]}
                 </div>
 
                 <h3 className="mb-3 font-display font-black leading-[1.15] tracking-[-0.02em] text-[clamp(20px,3vw,32px)]">
@@ -69,22 +72,22 @@ export default function ProjectsSection() {
                 </h3>
 
                 <p className="mb-6 text-[14px] leading-[1.75] text-[var(--text-muted)] md:text-[15px]">
-                  {project.description}
+                  {project.description[language]}
                 </p>
 
                 {/* Metrics */}
                 <div className="mb-6 flex gap-5 border-y border-white/[0.07] py-4 md:gap-6">
                   {project.metrics.map((m) => (
-                    <div key={m.key} className="flex flex-col gap-0.5">
+                    <div key={m.key[language]} className="flex flex-col gap-0.5">
                       <span className="font-display font-bold tracking-tight text-[17px] md:text-[20px]">
                         {m.value}
                         {m.accent && (
-                          <span style={{ color: m.key.includes("GPS") ? "#00e5a0" : "var(--accent)" }}>
+                          <span style={{ color: m.key.en.includes("GPS") ? "#00e5a0" : "var(--accent)" }}>
                             {m.accent}
                           </span>
                         )}
                       </span>
-                      <span className="text-[11px] text-[var(--text-dim)]">{m.key}</span>
+                      <span className="text-[11px] text-[var(--text-dim)]">{m.key[language]}</span>
                     </div>
                   ))}
                 </div>
@@ -105,7 +108,7 @@ export default function ProjectsSection() {
                 <div className="flex flex-wrap gap-3">
                   {project.links.map((link) => (
                     <a
-                      key={link.label}
+                      key={link.label[language]}
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -115,7 +118,7 @@ export default function ProjectsSection() {
                           : "inline-flex items-center gap-1.5 rounded-md border border-white/[0.07] px-4 py-2 text-[13px] font-medium text-[var(--text-muted)] transition-all hover:border-[var(--accent)] hover:text-[var(--text)] hover:-translate-y-px"
                       }
                     >
-                      {link.label}
+                      {link.label[language]}
                     </a>
                   ))}
                   <Link
@@ -126,7 +129,7 @@ export default function ProjectsSection() {
                       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                       <polyline points="14 2 14 8 20 8" />
                     </svg>
-                    Case Study
+                    {t("projects.viewCase")}
                   </Link>
                 </div>
               </div>

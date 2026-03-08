@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     if (!cs) return {};
     return {
         title: `${cs.title} — Case Study · Tôn Quỳnh Long`,
-        description: cs.tagline,
+        description: cs.tagline.en,
     };
 }
 

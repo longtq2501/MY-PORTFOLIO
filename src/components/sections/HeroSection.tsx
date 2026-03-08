@@ -1,12 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-
-const stats = [
-  { value: "2×", label: "Production Projects" },
-  { value: "236+", label: "Contributions in 2026" },
-  { value: "6↑", label: "Team as Tech Lead" },
-];
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const CODE_LINES = [
   { text: "// Bulk calendar engine — O(1) deduplication", color: "#555577", delay: 0 },
@@ -41,6 +36,7 @@ const CODE_LINES = [
 const RESULT_LINE = { text: "✓ 312 sessions created in 743ms", delay: 2100 };
 
 function TerminalBlock() {
+  const { t } = useLanguage();
   const [visibleLines, setVisibleLines] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [cursor, setCursor] = useState(true);
@@ -48,44 +44,31 @@ function TerminalBlock() {
   useEffect(() => {
     // Cursor blink
     const cursorInterval = setInterval(() => setCursor((c) => !c), 530);
+    return () => clearInterval(cursorInterval);
+  }, []);
 
+  useEffect(() => {
     // Reveal lines one by one
     const timeouts: ReturnType<typeof setTimeout>[] = [];
-    CODE_LINES.forEach((line, i) => {
-      timeouts.push(setTimeout(() => setVisibleLines(i + 1), line.delay + 600));
-    });
-    timeouts.push(
-      setTimeout(() => setShowResult(true), RESULT_LINE.delay + 600)
-    );
+    
+    if (visibleLines === 0 && !showResult) {
+      CODE_LINES.forEach((line, i) => {
+        timeouts.push(setTimeout(() => setVisibleLines(i + 1), line.delay + 600));
+      });
+      timeouts.push(
+        setTimeout(() => setShowResult(true), RESULT_LINE.delay + 600)
+      );
 
-    // Loop: reset after 5s pause
-    const loopTimeout = setTimeout(() => {
-      setVisibleLines(0);
-      setShowResult(false);
-    }, RESULT_LINE.delay + 600 + 4000);
+      // Loop: reset after 4s pause
+      timeouts.push(setTimeout(() => {
+        setVisibleLines(0);
+        setShowResult(false);
+      }, RESULT_LINE.delay + 600 + 4000));
+    }
 
     return () => {
-      clearInterval(cursorInterval);
       timeouts.forEach(clearTimeout);
-      clearTimeout(loopTimeout);
     };
-  }, [visibleLines === 0 && !showResult ? 0 : undefined]);
-
-  // Restart loop
-  useEffect(() => {
-    if (visibleLines === 0 && !showResult) {
-      const t = setTimeout(() => {
-        CODE_LINES.forEach((line, i) => {
-          setTimeout(() => setVisibleLines(i + 1), line.delay + 300);
-        });
-        setTimeout(() => setShowResult(true), RESULT_LINE.delay + 300);
-        setTimeout(() => {
-          setVisibleLines(0);
-          setShowResult(false);
-        }, RESULT_LINE.delay + 300 + 4000);
-      }, 800);
-      return () => clearTimeout(t);
-    }
   }, [visibleLines, showResult]);
 
   return (
@@ -138,7 +121,7 @@ function TerminalBlock() {
             className="mt-3 flex items-center gap-2 rounded-lg border border-[rgba(0,229,160,0.2)] bg-[rgba(0,229,160,0.06)] px-3 py-2"
           >
             <span className="text-[#00e5a0]">▶</span>
-            <span className="font-mono text-[12px] text-[#00e5a0]">{RESULT_LINE.text}</span>
+            <span className="font-mono text-[12px] text-[#00e5a0]">{t("hero.terminal.result")}</span>
           </motion.div>
         )}
       </div>
@@ -148,7 +131,7 @@ function TerminalBlock() {
         <span className="text-[10px] text-[#333344]">Tutor Pro · tutor-pro-app.vercel.app</span>
         <span className="flex items-center gap-1.5 text-[10px] text-[#00e5a0]">
           <span className="h-1.5 w-1.5 rounded-full bg-[#00e5a0]" style={{ boxShadow: "0 0 6px #00e5a0" }} />
-          Live in production
+          {t("hero.terminal.live")}
         </span>
       </div>
     </div>
@@ -156,6 +139,14 @@ function TerminalBlock() {
 }
 
 export default function HeroSection() {
+  const { t } = useLanguage();
+
+  const stats = [
+    { value: "2×", label: t("hero.stats.projects") },
+    { value: "236+", label: t("hero.stats.contributions") },
+    { value: "6↑", label: t("hero.stats.team") },
+  ];
+
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden px-6 md:px-12 xl:px-20">
       {/* Grid bg */}
@@ -173,12 +164,12 @@ export default function HeroSection() {
         transition={{ duration: 0.6, delay: 0.9 }}
         className="absolute bottom-12 right-6 hidden rounded-xl border border-white/[0.07] bg-[var(--surface)] p-4 2xl:block"
       >
-        <div className="mb-2.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#555566]">Currently</div>
+        <div className="mb-2.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#555566]">{t("hero.currently.label")}</div>
         <div className="space-y-1.5">
           {[
-            { dot: "#ffaa00", text: "Flood Rescue", sub: "Sprint 1" },
-            { dot: "#00e5a0", text: "Tutor Pro", sub: "Production" },
-            { dot: "#7c6aff", text: "Open to", sub: "Internship 2026" },
+            { dot: "#ffaa00", text: t("hero.currently.floodRescue"), sub: t("hero.currently.sprint") + " 1" },
+            { dot: "#00e5a0", text: t("hero.currently.tutorPro"), sub: t("hero.currently.production") },
+            { dot: "#7c6aff", text: t("hero.currently.openTo"), sub: t("hero.currently.internship") },
           ].map((item) => (
             <div key={item.text} className="flex items-center gap-2 text-[12px]">
               <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full" style={{ background: item.dot }} />
@@ -203,7 +194,7 @@ export default function HeroSection() {
             >
               <span className="h-px w-8 bg-[var(--accent)]" />
               <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
-                Fullstack Developer · Ho Chi Minh City
+                {t("hero.sub")}
               </span>
             </motion.div>
 
@@ -230,8 +221,12 @@ export default function HeroSection() {
               className="mt-6 max-w-md leading-[1.7] text-[#9090aa]"
               style={{ fontSize: "clamp(14px, 1.15vw, 17px)" }}
             >
-              I <strong className="font-semibold text-white">design the interface</strong>, architect the backend,
-              {" "}and <strong className="font-semibold text-white">ship the whole thing</strong> — solo or as Tech Lead.
+              {t("hero.tagline").split(/\{(.*?)\}/).map((part, i) => {
+                if (part === "design") return <strong key={i} className="font-semibold text-white">{t("hero.design")}</strong>;
+                if (part === "architect") return <strong key={i} className="font-semibold text-white">{t("hero.architect")}</strong>;
+                if (part === "ship") return <strong key={i} className="font-semibold text-white">{t("hero.ship")}</strong>;
+                return part;
+              })}
             </motion.p>
 
             {/* Stats */}
@@ -265,7 +260,7 @@ export default function HeroSection() {
                   <rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" />
                   <rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" />
                 </svg>
-                View Projects
+                {t("hero.viewProjects")}
               </a>
               {/* <a href="#contact"
                 className="inline-flex items-center gap-2 rounded-md border border-white/[0.1] px-5 py-2.5 text-[14px] font-medium text-[#a0a0b8] transition-all hover:border-white/[0.2] hover:text-white hover:-translate-y-px">
@@ -300,7 +295,7 @@ export default function HeroSection() {
           className="animate-bounce text-[#444455]">
           <path d="M12 5v14M5 12l7 7 7-7" />
         </svg>
-        <span className="text-[11px] tracking-[0.15em] text-[#444455]">Scroll to explore</span>
+        <span className="text-[11px] tracking-[0.15em] text-[#444455]">{t("hero.scroll")}</span>
       </motion.div>
     </section>
   );
