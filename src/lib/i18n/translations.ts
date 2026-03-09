@@ -7,7 +7,7 @@ export const translations = {
       getInTouch: "Get in touch",
     },
     hero: {
-      sub: "Fullstack Developer · Ho Chi Minh City",
+      sub: "Backend Developer · Ho Chi Minh City",
       tagline: "I {design}, {architect}, and {ship} — solo or as Tech Lead.",
       design: "design the interface",
       architect: "architect the backend",
@@ -26,7 +26,7 @@ export const translations = {
         openTo: "Open to",
         internship: "Internship 2026",
         sprint: "Sprint",
-        production: "Production",
+        production: "Maintaining",
       },
       scroll: "Scroll to explore",
       terminal: {
@@ -37,12 +37,12 @@ export const translations = {
     about: {
       title: "About",
       heading: "I build things people actually use.",
-      para1: "I'm a {thirdYear} at UTH — but my projects don't look like coursework. Tutor Pro started as a tool I built to manage my own tutoring business. It grew into a {fullEdTech} with WebRTC live rooms, AI feedback, VietQR invoicing, and a real-time notification engine. It's running in production right now.",
+      para1: "I'm a {thirdYear} at UTH — but my projects don't look like coursework. Tutor Pro started as a tool I built to manage my own tutoring business. It grew into a {fullEdTech} with WebRTC live rooms, AI feedback, VietQR invoicing, and a real-time notification engine. Core-complete and running in production.",
       thirdYear: "third-year IT student",
       fullEdTech: "full EdTech platform",
       para2: "Simultaneously, I'm leading a {sixPerson} building a microservices platform for flood rescue coordination — responsible for architecture, infra setup, CI/CD pipeline, and sprint management via Jira. Two production-level projects, running in parallel, year 3.",
       sixPerson: "6-person team",
-      para3: "Fullstack means I care about both sides equally. The performance of a Spring Boot batch insert matters as much as the smoothness of a Framer Motion transition. I design, I code, I ship.",
+      para3: "Backend is my core — I care deeply about API design, system architecture, and performance. I also handle frontend independently with Next.js, which lets me deliver complete features without blocking on a separate team.",
       cards: {
         solo: "SOLO PROJECT",
         techLead: "TECH LEAD · 6-person team",
@@ -50,7 +50,7 @@ export const translations = {
         live: "Live in Production",
         uth: "UTH — University of Transport HCMC",
         degree: "Bachelor's in Information Technology · 2023 – 2027",
-        tutorProDesc: "EdTech SaaS — 10+ active users, 19 backend modules, WebRTC live classroom, AI feedback engine (Groq Llama 3.3 70B)",
+        tutorProDesc: "EdTech platform — 10+ active users, Spring Boot backend, WebRTC live classroom, AI feedback engine (Groq Llama 3.3 70B)",
         floodRescueDesc: "Microservices platform — RabbitMQ + Kafka, GPS live tracking, 5 actor roles, Docker + CI/CD on VPS",
       },
     },
@@ -62,7 +62,7 @@ export const translations = {
     stack: {
       title: "Tech Stack",
       heading: "Tools I work with.",
-      sub: "Both sides of the stack, deliberately chosen for each problem.",
+      sub: "Backend is my core. I also handle frontend independently when needed.",
       frontend: {
         next: "App Router · SSR · RSC",
         react: "Hooks · Query · Zustand",
@@ -86,7 +86,7 @@ export const translations = {
       title: "Contact",
       heading: "Let's build {something} real.",
       something: "something",
-      para: "Open to fullstack internship and fresher roles in 2026 — Vietnam or remote.\nIf you're building something interesting, I'd like to hear about it.",
+      para: "Open to backend internship and fresher roles in 2026 — Vietnam or remote.\nIf you're building something interesting, I'd like to hear about it.",
     },
     footer: {
       builtBy: "Built with Next.js · Deployed on Vercel",
@@ -95,7 +95,7 @@ export const translations = {
       resume: "Resume",
       downloadCV: "Download CV (.pdf)",
       connect: "Let's connect",
-      internship2026: "Open to internship & fresher roles 2026",
+      internship2026: "Open to backend internship & fresher roles 2026",
     },
     casestudy: {
       back: "Back to Portfolio",
@@ -123,7 +123,7 @@ export const translations = {
       getInTouch: "Liên hệ ngay",
     },
     hero: {
-      sub: "Lập trình viên Fullstack · TP. Hồ Chí Minh",
+      sub: "Lập trình viên Backend · TP. Hồ Chí Minh",
       tagline: "Tôi {design} giao diện, {architect} hệ thống và {ship} sản phẩm hoàn thiện — dù là làm độc lập hay Tech Lead.",
       design: "thiết kế",
       architect: "xây dựng",
@@ -142,7 +142,7 @@ export const translations = {
         openTo: "Tìm kiếm",
         internship: "Thực tập 2026",
         sprint: "Sprint",
-        production: "Vận hành",
+        production: "Bảo trì",
       },
       scroll: "Cuộn để khám phá",
       terminal: {
@@ -153,12 +153,12 @@ export const translations = {
     about: {
       title: "Giới thiệu",
       heading: "Tôi tạo ra những sản phẩm thực tế",
-      para1: "Tôi là {thirdYear} tại UTH — nhưng các dự án của tôi không chỉ dừng lại ở bài tập trên lớp. Tutor Pro bắt đầu từ một công cụ tôi xây dựng để quản lý công việc gia sư của mình. Nó đã phát triển thành một {fullEdTech} hoàn chỉnh với phòng học trực tuyến WebRTC, phản hồi AI, hóa đơn VietQR và hệ thống thông báo thời gian thực. Hệ thống đang vận hành thực tế.",
+      para1: "Tôi là {thirdYear} tại UTH — nhưng các dự án của tôi không chỉ dừng lại ở bài tập trên lớp. Tutor Pro bắt đầu từ một công cụ tôi xây dựng để quản lý công việc gia sư của mình. Nó đã phát triển thành một {fullEdTech} hoàn chỉnh với phòng học trực tuyến WebRTC, phản hồi AI, hóa đơn VietQR và hệ thống thông báo thời gian thực. Đã hoàn thiện core và đang vận hành thực tế.",
       thirdYear: "sinh viên IT năm 3",
       fullEdTech: "nền tảng EdTech",
       para2: "Đồng thời, tôi đang dẫn dắt một {sixPerson} xây dựng nền tảng microservices để điều phối cứu hộ lũ lụt — chịu trách nhiệm về kiến trúc, hạ tầng, CI/CD và quản lý sprint qua Jira. Hai dự án cấp độ production chạy song song vào năm thứ 3.",
       sixPerson: "đội ngũ 6 người",
-      para3: "Fullstack có nghĩa là tôi quan tâm đến cả hai phía một cách công bằng. Hiệu năng của một xử lý Spring Boot batch quan trọng tương đương với sự mượt mà của một hiệu ứng Framer Motion. Tôi thiết kế, tôi lập trình và tôi vận hành sản phẩm.",
+      para3: "Backend là thế mạnh cốt lõi của tôi — tôi chú trọng thiết kế API, kiến trúc hệ thống và hiệu năng. Tôi cũng tự xử lý frontend với Next.js khi cần, giúp tôi hoàn thiện tính năng mà không cần phụ thuộc vào team riêng.",
       cards: {
         solo: "DỰ ÁN ĐỘC LẬP",
         techLead: "TECH LEAD · Đội ngũ 6 người",
@@ -166,7 +166,7 @@ export const translations = {
         live: "Đang vận hành thực tế",
         uth: "UTH — Đại học Giao thông vận tải TP.HCM",
         degree: "Cử nhân Công nghệ Thông tin · 2023 – 2027",
-        tutorProDesc: "Nền tảng EdTech SaaS — 10+ người dùng, 19 mô-đun backend, lớp học trực tuyến WebRTC, AI chấm bài (Groq Llama 3.3 70B)",
+        tutorProDesc: "Nền tảng EdTech — 10+ người dùng, backend Spring Boot, lớp học trực tuyến WebRTC, AI chấm bài (Groq Llama 3.3 70B)",
         floodRescueDesc: "Nền tảng Microservices — RabbitMQ + Kafka, định vị GPS thời gian thực, 5 vai trò người dùng, Docker + CI/CD trên VPS",
       },
     },
@@ -178,7 +178,7 @@ export const translations = {
     stack: {
       title: "Công nghệ",
       heading: "Công cụ tôi sử dụng",
-      sub: "Cả hai phía của hệ thống, được lựa chọn kỹ lưỡng cho từng vấn đề.",
+      sub: "Backend là cốt lõi. Tôi cũng tự xử lý frontend khi cần thiết.",
       frontend: {
         next: "App Router · SSR · RSC",
         react: "Hooks · Query · Zustand",
@@ -202,7 +202,7 @@ export const translations = {
       title: "Liên hệ",
       heading: "Hãy cùng tạo nên điều {something} thực tế",
       something: "khác biệt",
-      para: "Sẵn sàng cho vị trí thực tập và fresher fullstack năm 2026 — tại Việt Nam hoặc làm việc từ xa.\nNếu bạn đang xây dựng điều gì đó thú vị, tôi rất muốn được lắng nghe.",
+      para: "Sẵn sàng cho vị trí thực tập và fresher backend năm 2026 — tại Việt Nam hoặc làm việc từ xa.\nNếu bạn đang xây dựng điều gì đó thú vị, tôi rất muốn được lắng nghe.",
     },
     footer: {
       builtBy: "Xây dựng bằng Next.js · Triển khai trên Vercel",
@@ -211,7 +211,7 @@ export const translations = {
       resume: "Hồ sơ",
       downloadCV: "Tải xuống CV (.pdf)",
       connect: "Cùng kết nối",
-      internship2026: "Sẵn sàng cho các vị trí Internship & Fresher 2026",
+      internship2026: "Sẵn sàng cho các vị trí Backend Internship & Fresher 2026",
     },
     casestudy: {
       back: "Quay lại Portfolio",
