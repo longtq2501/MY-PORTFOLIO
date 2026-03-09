@@ -8,7 +8,7 @@ export const translations = {
     },
     hero: {
       sub: "Fullstack Developer · Ho Chi Minh City",
-      tagline: "I {design} the interface, {architect} the backend, and {ship} the whole thing — solo or as Tech Lead.",
+      tagline: "I {design}, {architect}, and {ship} — solo or as Tech Lead.",
       design: "design the interface",
       architect: "architect the backend",
       ship: "ship the whole thing",

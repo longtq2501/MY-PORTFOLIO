@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import type { CaseStudy, Section } from "@/lib/data/case-studies";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
@@ -14,6 +15,7 @@ const fadeUp = (delay = 0) => ({
 
 export default function CaseStudyClient({ cs }: { cs: CaseStudy }) {
     const { language, t } = useLanguage();
+    const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
 
     return (
         <div className="min-h-screen bg-[var(--bg)]">
@@ -101,7 +103,7 @@ export default function CaseStudyClient({ cs }: { cs: CaseStudy }) {
             <div className="mx-auto max-w-4xl space-y-20 px-6 pb-24 md:px-12">
                 {cs.sections.map((section, si) => (
                     <motion.div key={si} {...fadeUp(0)}>
-                        <SectionRenderer section={section} accent={cs.accentColor} language={language} t={t} />
+                        <SectionRenderer section={section} accent={cs.accentColor} language={language} t={t} onImageClick={(img) => setFullscreenImage(img)} />
                     </motion.div>
                 ))}
 
@@ -121,13 +123,38 @@ export default function CaseStudyClient({ cs }: { cs: CaseStudy }) {
                     </a>
                 </div>
             </div>
+
+            {/* ── Fullscreen Modal ── */}
+            {fullscreenImage && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur"
+                    onClick={() => setFullscreenImage(null)}>
+                    <div className="relative h-full w-full flex items-center justify-center p-4"
+                        onClick={(e) => e.stopPropagation()}>
+                        <Image
+                            src={fullscreenImage}
+                            alt="Fullscreen"
+                            fill
+                            className="object-contain"
+                            unoptimized
+                        />
+                        <button
+                            onClick={() => setFullscreenImage(null)}
+                            className="absolute top-4 right-4 rounded-lg bg-black/50 p-2 text-white transition-colors hover:bg-black/70">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
 
 // ── Section router ────────────────────────────────────────────────────────────
 
-function SectionRenderer({ section, accent, language, t }: { section: Section; accent: string; language: 'en' | 'vi'; t: (path: string) => string }) {
+function SectionRenderer({ section, accent, language, t, onImageClick }: { section: Section; accent: string; language: 'en' | 'vi'; t: (path: string) => string; onImageClick: (src: string) => void }) {
     switch (section.type) {
         case "features_list":
             return (
@@ -138,9 +165,16 @@ function SectionRenderer({ section, accent, language, t }: { section: Section; a
                             <motion.div key={fi} {...fadeUp(fi * 0.04)}
                                 className="overflow-hidden rounded-2xl border border-white/[0.07] bg-[var(--surface)] transition-colors hover:border-white/[0.14]">
                                 {f.media && (
-                                    <div className="border-b border-white/[0.07] bg-[#06060c]">
+                                    <div className="relative border-b border-white/[0.07] bg-[#06060c] group">
                                         <Image src={f.media} alt={f.title[language]} width={1200} height={675}
                                             className="w-full object-cover" unoptimized />
+                                        <button
+                                            onClick={() => onImageClick(f.media!)}
+                                            className="absolute bottom-3 right-3 rounded-lg bg-black/60 p-2 opacity-0 transition-opacity group-hover:opacity-100">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+                                            </svg>
+                                        </button>
                                     </div>
                                 )}
                                 <div className="p-6">
@@ -310,14 +344,41 @@ function SectionRenderer({ section, accent, language, t }: { section: Section; a
                     <SectionHeader title={section.title[language]} accent={accent} />
                     {section.content[language] && <p className="mb-6 text-[16px] leading-[1.85] text-[#c8c6e8]">{section.content[language]}</p>}
                     {section.features && (
-                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                            {section.features.map((f, fi) => (
-                                <motion.div key={fi} {...fadeUp(fi * 0.07)}
-                                    className="rounded-xl border border-white/[0.07] bg-[var(--surface)] p-5">
-                                    <h4 className="mb-2 font-display text-[15px] font-bold text-white">{f.title[language]}</h4>
-                                    <p className="text-[13px] leading-[1.7] text-[#9090aa]">{f.problem ? f.problem[language] : (f.solution ? f.solution[language] : '')}</p>
-                                </motion.div>
-                            ))}
+                        <div className="space-y-4">
+                            {section.features.map((f, fi) => {
+                                const hasMedia = !!f.media;
+                                const hasText = !!(f.problem?.[language] || f.solution?.[language] || f.result?.[language]);
+                                // Full-width image when no meaningful text
+                                if (hasMedia && !hasText) {
+                                    return (
+                                        <motion.div key={fi} {...fadeUp(fi * 0.07)}
+                                            className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#06060c] group">
+                                            <Image
+                                                src={f.media!}
+                                                alt={f.title[language]}
+                                                width={1600}
+                                                height={900}
+                                                className="w-full h-auto object-contain"
+                                                unoptimized
+                                            />
+                                            <button
+                                                onClick={() => onImageClick(f.media!)}
+                                                className="absolute bottom-3 right-3 rounded-lg bg-black/60 p-2 opacity-0 transition-opacity group-hover:opacity-100">
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+                                                </svg>
+                                            </button>
+                                        </motion.div>
+                                    );
+                                }
+                                return (
+                                    <motion.div key={fi} {...fadeUp(fi * 0.07)}
+                                        className="rounded-xl border border-white/[0.07] bg-[var(--surface)] p-5">
+                                        <h4 className="mb-2 font-display text-[15px] font-bold text-white">{f.title[language]}</h4>
+                                        <p className="text-[13px] leading-[1.7] text-[#9090aa]">{f.problem ? f.problem[language] : (f.solution ? f.solution[language] : '')}</p>
+                                    </motion.div>
+                                );
+                            })}
                         </div>
                     )}
                 </div>
