@@ -1,7 +1,7 @@
 "use client";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const CODE_LINES = [
   { text: "// Bulk calendar engine — O(1) deduplication", color: "#555577", delay: 0 },
@@ -49,7 +49,7 @@ function TerminalBlock() {
 
   useEffect(() => {
     const timeouts: ReturnType<typeof setTimeout>[] = [];
-    
+
     const run = () => {
       setVisibleLines(0);
       setShowResult(false);
@@ -145,7 +145,7 @@ export default function HeroSection() {
   const { t } = useLanguage();
 
   const stats = [
-    { value: "2×", label: t("hero.stats.projects") },
+    { value: "3×", label: t("hero.stats.projects") },
     { value: "236+", label: t("hero.stats.contributions") },
     { value: "6↑", label: t("hero.stats.team") },
   ];

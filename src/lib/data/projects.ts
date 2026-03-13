@@ -24,9 +24,9 @@ export const projects: Project[] = [
       vi: "Tự động hóa quản lý gia sư. Lịch trình thời gian thực, lớp học WebRTC trực tuyến, phản hồi AI và hóa đơn VietQR — một nền tảng chuyển đổi số giáo dục tôi sử dụng hàng ngày.",
     },
     metrics: [
-      { value: "<800", accent: "ms", key: { en: "300+ sessions bulk", vi: "Tạo 300+ buổi học" } },
-      { value: "<500", accent: "ms", key: { en: "SSE notification", vi: "Thông báo SSE" } },
-      { value: "<300", accent: "ms", key: { en: "AI feedback (Groq)", vi: "Phản hồi AI" } },
+      { value: "<800", accent: "ms", key: { en: "300+ sessions batch", vi: "Xử lý 300+ buổi học" } },
+      { value: "<500", accent: "ms", key: { en: "SSE delivery", vi: "Phân phối SSE" } },
+      { value: "<300", accent: "ms", key: { en: "AI inference", vi: "Suy luận AI" } },
     ],
     stack: ["Next.js 15", "React 19", "TypeScript", "Spring Boot 3.4", "Java 21", "MySQL", "WebRTC", "Groq AI", "Docker"],
     links: [
@@ -42,21 +42,41 @@ export const projects: Project[] = [
     statusDot: "active",
     title: "Flood Rescue Coordination",
     description: {
-      en: "A microservices platform for real flood emergency scenarios — from GPS-tagged citizen rescue requests to live team dispatching, relief supply management, and real-time operations monitoring across 5 actor roles.",
-      vi: "Nền tảng microservices cho các kịch bản cứu hộ khẩn cấp — từ yêu cầu cứu hộ gắn thẻ định vị đến điều phối đội ngũ, quản lý nhu yếu phẩm và giám sát vận hành thời gian thực.",
+      en: "A microservices platform for real flood emergency scenarios — from GPS-tagged citizen rescue requests to live team dispatching, relief supply management, and real-time operations monitoring. Optimized for low-resource VPS deployment.",
+      vi: "Nền tảng microservices cho các kịch bản cứu hộ khẩn cấp — từ yêu cầu cứu hộ gắn thẻ định vị đến điều phối đội ngũ, quản lý nhu yếu phẩm và giám sát vận hành thời gian thực. Được tối ưu hóa cho triển khai VPS cấu hình thấp.",
     },
     metrics: [
-      { value: "6", accent: "×", key: { en: "Microservices", vi: "Dịch vụ" } },
+      { value: "7", accent: "×", key: { en: "Microservices", vi: "Dịch vụ" } },
       { value: "10", accent: "s", key: { en: "GPS interval", vi: "Tần suất GPS" } },
       { value: "5", accent: "+", key: { en: "Actor roles", vi: "Vai trò người dùng" } },
     ],
-    stack: ["Spring Boot", "Next.js", "PostgreSQL", "RabbitMQ", "Kafka", "Nginx", "Docker", "GitHub Actions"],
+    stack: ["Spring Boot", "Next.js", "MySQL", "RabbitMQ", "Spring Cloud Gateway", "Docker", "GitHub Actions"],
     links: [
       {
         label: { en: "GitHub", vi: "GitHub" },
         href: "https://github.com/longtq2501/Flood-Rescue-Coordination-and-Relief-Management-System",
         variant: "primary",
       },
+    ],
+  },
+  {
+    id: "next-spring-skills",
+    num: "03",
+    tag: { en: "Open Source · Tooling", vi: "Mã nguồn mở · Công cụ" },
+    tagColor: "#f7df1e",
+    statusDot: "live",
+    title: "Next Spring Skills CLI",
+    description: {
+      en: "A CLI tool package published on npm to standardize best practices and code patterns for Next.js + Spring Boot integration. Helps developers scaffold professional-grade fullstack projects quickly.",
+      vi: "Gói công cụ CLI trên npm giúp chuẩn hóa các thực hành tốt nhất và mẫu code cho tích hợp Next.js + Spring Boot. Hỗ trợ khởi tạo nhanh các dự án fullstack chuyên nghiệp.",
+    },
+    metrics: [
+      { value: "800", accent: "+", key: { en: "Downloads", vi: "Lượt tải" } },
+      { value: "100", accent: "%", key: { en: "Standardized", vi: "Chuẩn hóa" } },
+    ],
+    stack: ["Node.js", "TypeScript", "NPM", "Commander.js"],
+    links: [
+      { label: { en: "View on NPM", vi: "Xem trên NPM" }, href: "https://www.npmjs.com/package/@longtq2501/next-spring-skills", variant: "primary" },
     ],
   },
 ];

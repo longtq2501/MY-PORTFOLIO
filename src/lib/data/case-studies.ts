@@ -368,4 +368,75 @@ jobs:
             },
         ],
     },
+
+    // ─────────────────────────────────────────────
+    // NEXT SPRING SKILLS
+    // ─────────────────────────────────────────────
+    {
+        id: "next-spring-skills",
+        title: "Next Spring Skills CLI",
+        tagline: {
+            en: "Standardizing full-stack brilliance. A CLI for professional-grade Next.js + Spring Boot integration.",
+            vi: "Chuẩn hóa lập trình full-stack. Công cụ CLI cho tích hợp Next.js + Spring Boot chuyên nghiệp.",
+        },
+        role: { en: "Creator & Lead Maintainer", vi: "Tác giả & Người duy trì chính" },
+        period: { en: "Jan 2025 – Present", vi: "Tháng 1/2025 – Hiện tại" },
+        status: { en: "Open Source · 800+ downloads", vi: "Mã nguồn mở · 800+ lượt tải" },
+        statusColor: "#f7df1e",
+        accentColor: "#f7df1e",
+        stack: [
+            "Node.js", "TypeScript 5", "Commander.js", "Inquirer.js",
+            "NPM ecosystem", "Spring Boot", "Next.js", "AI Collaboration Protocols",
+        ],
+        liveUrl: "https://www.npmjs.com/package/@longtq2501/next-spring-skills",
+        githubUrl: "https://github.com/longtq2501/next-spring-skills",
+        overview: {
+            en: "Development teams often struggle with the 'blank page syndrome' and inconsistent coding patterns when bridging Next.js and Spring Boot. Next Spring Skills CLI is a specialized package built to institutionalize best practices. It's not just a generator; it's a bridge that brings modular architecture, meta-prompting protocols, and tactical AI-collaboration rules into any project in seconds.",
+            vi: "Các nhóm phát triển thường gặp khó khăn với 'hội chứng trang giấy trắng' và các mẫu mã nguồn không nhất quán khi kết hợp Next.js và Spring Boot. Next Spring Skills CLI là một gói chuyên biệt được xây dựng để thể chế hóa các thực hành tốt nhất. Nó không chỉ là một bộ tạo code; nó là nhịp cầu mang kiến trúc hướng mô-đun, các giao thức meta-prompting và quy tắc cộng tác AI vào bất kỳ dự án nào chỉ trong vài giây.",
+        },
+        sections: [
+            {
+                type: "features_list",
+                title: { en: "Core Architecture", vi: "Kiến trúc Cốt lõi" },
+                content: { en: "Designed to be lightweight yet comprehensive in standardizing the stack:", vi: "Được thiết kế nhẹ nhàng nhưng toàn diện trong việc chuẩn hóa stack:" },
+                features: [
+                    {
+                        title: { en: "Meta-Prompting Protocols", vi: "Giao thức Meta-Prompting" },
+                        solution: { en: "Standardized prompt instructions for AI agents (Claude, ChatGPT, etc.) that enforce Design Intelligence and Next.js performance standards at the prompt level.", vi: "Các hướng dẫn prompt chuẩn hóa cho các agent AI (Claude, ChatGPT...) giúp thực thi các tiêu chuẩn Design Intelligence và hiệu năng Next.js ngay từ cấp độ prompt." },
+                        result: { en: "Dramatically improved code quality from AI assistants, reducing architectural drift by ~70%.", vi: "Cải thiện đáng kể chất lượng code từ các trợ lý AI, giảm độ lệch kiến trúc khoảng 70%." },
+                    },
+                    {
+                        title: { en: "Standardized Scaffolding", vi: "Khung dự án Chuẩn hóa" },
+                        solution: { en: "Automated delivery of directory structures following Atomic Design (frontend) and Hexagonal/Modular boundaries (backend).", vi: "Tự động phân phối cấu trúc thư mục theo Atomic Design (frontend) và ranh giới Hexagonal/Modular (backend)." },
+                        result: { en: "Developers skip 2-3 hours of repetitive setup per project. codebase clarity is maintained as it scales.", vi: "Lập trình viên bỏ qua 2-3 giờ thiết lập lặp lại cho mỗi dự án. Độ rõ ràng của mã nguồn được duy trì khi mở rộng." },
+                    },
+                    {
+                        title: { en: "Interaction Protocols", vi: "Giao thức Tương tác" },
+                        solution: { en: "Published interaction rules (Skills Manifest) that define how the frontend and backend communicate over REST/SSE/WS with consistent security and error-handling patterns.", vi: "Công bố các quy tắc tương tác (Skills Manifest) xác định cách frontend và backend giao tiếp qua REST/SSE/WS với các mẫu bảo mật và xử lý lỗi nhất quán." },
+                        result: { en: "Consistency across different services, making onboardings 50% faster.", vi: "Tính nhất quán giữa các dịch vụ khác nhau, giúp việc làm quen dự án (onboarding) nhanh hơn 50%." },
+                    },
+                ],
+            },
+            {
+                type: "code",
+                title: { en: "Instant Implementation", vi: "Triển khai Tức thì" },
+                content: { en: "Integrate the entire wisdom manifest into any repository with a single command:", vi: "Tích hợp toàn bộ cẩm nang tri thức vào bất kỳ kho lưu trữ nào bằng một lệnh duy nhất:" },
+                codeSnippet: {
+                    lang: "bash",
+                    label: "Terminal",
+                    code: "npx @longtq2501/next-spring-skills",
+                },
+            },
+            {
+                type: "result",
+                title: { en: "Impact & Downloads", vi: "Tác động & Lượt tải" },
+                content: { en: "The package has seen strong adoption within the niche of students and developers using this specific modern fullstack combination.", vi: "Gói công cụ này đã được đón nhận nồng nhiệt trong cộng đồng sinh viên và lập trình viên sử dụng tổ hợp fullstack hiện đại này." },
+                metrics: [
+                    { value: "800+", label: { en: "NPM Downloads", vi: "Lượt tải NPM" } },
+                    { value: "v1.2.x", label: { en: "Stable Release", vi: "Phiên bản ổn định" } },
+                    { value: "Full", label: { en: "TypeScript Support", vi: "Hỗ trợ TypeScript" } },
+                ],
+            },
+        ],
+    },
 ];

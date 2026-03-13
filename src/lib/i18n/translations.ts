@@ -51,7 +51,7 @@ export const translations = {
         uth: "UTH — University of Transport HCMC",
         degree: "Bachelor's in Information Technology · 2023 – 2027",
         tutorProDesc: "EdTech platform — 10+ active users, Spring Boot backend, WebRTC live classroom, AI feedback engine (Groq Llama 3.3 70B)",
-        floodRescueDesc: "Microservices platform — RabbitMQ + Kafka, GPS live tracking, 5 actor roles, Docker + CI/CD on VPS",
+        floodRescueDesc: "Microservices platform — 7 services, RabbitMQ, GPS live tracking, MySQL, Docker + CI/CD on VPS",
       },
     },
     projects: {
@@ -167,7 +167,7 @@ export const translations = {
         uth: "UTH — Đại học Giao thông vận tải TP.HCM",
         degree: "Cử nhân Công nghệ Thông tin · 2023 – 2027",
         tutorProDesc: "Nền tảng EdTech — 10+ người dùng, backend Spring Boot, lớp học trực tuyến WebRTC, AI chấm bài (Groq Llama 3.3 70B)",
-        floodRescueDesc: "Nền tảng Microservices — RabbitMQ + Kafka, định vị GPS thời gian thực, 5 vai trò người dùng, Docker + CI/CD trên VPS",
+        floodRescueDesc: "Nền tảng Microservices — 7 dịch vụ, RabbitMQ, định vị GPS thời gian thực, MySQL, Docker + CI/CD trên VPS",
       },
     },
     projects: {

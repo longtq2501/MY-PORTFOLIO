@@ -1,13 +1,14 @@
 "use client";
-import { motion } from "framer-motion";
-import SectionLabel from "@/components/ui/SectionLabel";
-import { projects } from "@/lib/data/projects";
-import TutorProMock from "@/components/ui/TutorProMock";
 import FloodRescueMock from "@/components/ui/FloodRescueMock";
-import Link from "next/link";
+import NpmPackageMock from "@/components/ui/NpmPackageMock";
+import SectionLabel from "@/components/ui/SectionLabel";
+import TutorProMock from "@/components/ui/TutorProMock";
+import { projects } from "@/lib/data/projects";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
-const mocks = [TutorProMock, FloodRescueMock];
+const mocks = [TutorProMock, FloodRescueMock, NpmPackageMock];
 
 const reveal = (delay = 0) => ({
   initial: { opacity: 0, y: 32 },
