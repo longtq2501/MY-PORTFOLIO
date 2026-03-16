@@ -43,8 +43,8 @@ export const caseStudies: CaseStudy[] = [
             vi: "Xây dựng bởi gia sư, dành cho gia sư. Một hệ thống sản phẩm hoàn chỉnh tự động hóa mọi gánh nặng vận hành.",
         },
         role: { en: "Solo Fullstack Developer", vi: "Lập trình viên Fullstack Độc lập" },
-        period: { en: "Dec 2024 – Present", vi: "Tháng 12/2024 – Hiện tại" },
-        status: { en: "Live · 10+ active users", vi: "Đang vận hành · 10+ người dùng hoạt động" },
+        period: { en: "Dec 2024 – Mar 2025 · Maintaining", vi: "Tháng 12/2024 – Tháng 3/2025 · Bảo trì" },
+        status: { en: "Live · Maintaining · 11+ users", vi: "Đang vận hành · Bảo trì · 11+ người dùng" },
         statusColor: "#00e5a0",
         accentColor: "#7c6aff",
         stack: [
@@ -55,7 +55,7 @@ export const caseStudies: CaseStudy[] = [
             "VietQR/NAPAS-247", "WebRTC", "STOMP WebSocket",
             "Docker Compose", "Railway", "Vercel", "Cloudinary",
         ],
-        liveUrl: "https://tutor-pro-app.vercel.app",
+        liveUrl: "https://tutorpro.id.vn",
         githubUrl: "https://github.com/longtq2501/Tutor-Pro",
         overview: {
             en: "Most tutors juggle spreadsheets, messaging apps, and manual bank transfers to run their classes. Tutor Pro replaces all of that with a single cohesive platform: automated scheduling, real-time notifications, live WebRTC teaching rooms, AI-generated feedback, and financial-grade invoicing — deployed and running in production. This is not a tutorial project. It solves real problems I faced as a part-time tutor, built to a standard I'd be comfortable deploying for other tutors to use.",
@@ -204,7 +204,7 @@ export const caseStudies: CaseStudy[] = [
         },
         role: { en: "Tech Lead · 6-person Team", vi: "Tech Lead · Đội ngũ 6 người" },
         period: { en: "2025 – Present", vi: "2025 – Hiện tại" },
-        status: { en: "Active · Sprint 1", vi: "Đang hoạt động · Sprint 1" },
+        status: { en: "Backend Complete · Frontend in Progress", vi: "Backend hoàn thiện · Frontend đang phát triển" },
         statusColor: "#ffaa00",
         accentColor: "#00e5a0",
         stack: [
@@ -250,8 +250,8 @@ export const caseStudies: CaseStudy[] = [
                 type: "solution",
                 title: { en: "System Architecture", vi: "Kiến trúc Hệ thống" },
                 content: {
-                    en: "5-layer architecture: Client → Nginx API Gateway → 6 Spring Boot Microservices → RabbitMQ + Kafka → PostgreSQL per service. Full DevOps automation via GitHub Actions → Docker Hub → VPS.",
-                    vi: "Kiến trúc 5 tầng: Client → Nginx API Gateway → 6 Spring Boot Microservices → RabbitMQ + Kafka → PostgreSQL riêng cho mỗi service. CI/CD tự động hoàn toàn qua GitHub Actions → Docker Hub → VPS.",
+                    en: "5-layer architecture: Client → Nginx API Gateway → 6 Spring Boot Microservices → RabbitMQ + Kafka → MySQL per service. Full DevOps automation via GitHub Actions → Docker Hub → VPS.",
+                    vi: "Kiến trúc 5 tầng: Client → Nginx API Gateway → 6 Spring Boot Microservices → RabbitMQ + Kafka → MySQL riêng cho mỗi service. CI/CD tự động hoàn toàn qua GitHub Actions → Docker Hub → VPS.",
                 },
                 features: [
                     {
@@ -296,9 +296,9 @@ export const caseStudies: CaseStudy[] = [
                     },
                     {
                         title: { en: "Database per Service from day 1", vi: "Cơ sở dữ liệu riêng cho mỗi Service ngay từ đầu" },
-                        chosen: { en: "PostgreSQL per microservice", vi: "PostgreSQL cho mỗi microservice" },
+                        chosen: { en: "MySQL per microservice", vi: "MySQL cho mỗi microservice" },
                         rejected: { en: "Shared database, split later", vi: "Dùng chung cơ sở dữ liệu rồi tách sau" },
-                        reason: { en: "Sharing a database across services creates invisible coupling that's painful to remove later. Dedicated PostgreSQL per service enforces the contract at the infrastructure level from the start.", vi: "Sử dụng chung cơ sở dữ liệu tạo ra sự ràng buộc ngầm rất khó tách sau này. Việc dành riêng PostgreSQL cho mỗi service giúp thực thi các hợp đồng dữ liệu ở cấp độ hạ tầng ngay từ đầu." },
+                        reason: { en: "Sharing a database across services creates invisible coupling that's painful to remove later. Dedicated MySQL per service enforces the contract at the infrastructure level from the start.", vi: "Sử dụng chung cơ sở dữ liệu tạo ra sự ràng buộc ngầm rất khó tách sau này. Việc dành riêng MySQL cho mỗi service giúp thực thi các hợp đồng dữ liệu ở cấp độ hạ tầng ngay từ đầu." },
                     },
                 ],
             },

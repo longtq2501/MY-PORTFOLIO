@@ -30,7 +30,7 @@ export const projects: Project[] = [
     ],
     stack: ["Next.js 15", "React 19", "TypeScript", "Spring Boot 3.4", "Java 21", "MySQL", "WebRTC", "Groq AI", "Docker"],
     links: [
-      { label: { en: "Live Demo", vi: "Trải nghiệm" }, href: "https://tutor-pro-app.vercel.app", variant: "primary" },
+      { label: { en: "Live Demo", vi: "Trải nghiệm" }, href: "https://tutorpro.id.vn", variant: "primary" },
       { label: { en: "GitHub", vi: "GitHub" }, href: "https://github.com/longtq2501/Tutor-Pro", variant: "ghost" },
     ],
   },
